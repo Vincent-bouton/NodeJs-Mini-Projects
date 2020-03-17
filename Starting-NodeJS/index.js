@@ -33,13 +33,28 @@ const url = require("url");
 
 //-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-//
 // Server
+
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
+const dataObject = JSON.parse(data);
+
 const server = http.createServer((req, res) => {
   const pathName = req.url;
 
+  //OVERVIEW PAGE
   if (pathName === "/" || pathName === "/overview") {
+    fs.re;
     res.end("This is overview");
+
+    // PRODUCT PAGE
   } else if (pathName === "/product") {
     res.end("This is product");
+
+    //API
+  } else if (pathName === "/api") {
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(data);
+
+    //NOT FOUND
   } else {
     res.writeHead(404, {
       "content-type": "text/html",
