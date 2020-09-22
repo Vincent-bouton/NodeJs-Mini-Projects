@@ -1,7 +1,7 @@
 const chalk = require("chalk");
 const yargs = require("yargs");
 
-const getNotes = require("./notes");
+const { getNotes, addNotes } = require("./notes");
 
 // CHALK COLOR
 const log = console.log;
@@ -28,8 +28,7 @@ yargs.command({
     },
   },
   handler: (argv) => {
-    log("Title: ", argv.title);
-    log("Body: ", argv.body);
+    addNotes(argv.title, argv.body);
   },
 });
 
