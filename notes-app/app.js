@@ -1,7 +1,7 @@
 const chalk = require("chalk");
 const yargs = require("yargs");
 
-const { getNotes, addNotes, removeNotes } = require("./notes");
+const { getNotes, addNotes, removeNotes, listNotes } = require("./notes");
 
 // CHALK COLOR
 const log = console.log;
@@ -49,16 +49,16 @@ yargs.command({
   },
 });
 
-//create remove command
+//create list command
 yargs.command({
   command: "list",
   describe: "list your notes",
   handler() {
-    log("listing out all notes!");
+    listNotes(success, error);
   },
 });
 
-//create remove command
+//create read command
 yargs.command({
   command: "read",
   describe: "read a note",

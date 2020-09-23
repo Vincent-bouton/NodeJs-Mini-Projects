@@ -31,6 +31,16 @@ const removeNotes = (title, chalkSuccess, chalkError) => {
   }
 };
 
+const listNotes = (chalkSuccess, chalkError) => {
+  const notes = loadNotes();
+  if (notes.length === 0) {
+    console.log(chalkError("No notes found"));
+  } else {
+    console.log(chalkSuccess("Your notes :"));
+    notes.forEach((note) => console.log(note.title));
+  }
+};
+
 const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync("notes.json");
@@ -50,4 +60,5 @@ module.exports = {
   getNotes: getNotes,
   addNotes: addNotes,
   removeNotes: removeNotes,
+  listNotes: listNotes,
 };
