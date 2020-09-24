@@ -1,11 +1,9 @@
-console.log("Starting");
+const request = require("postman-request");
 
-setTimeout(() => {
-  console.log("2 second timer");
-}, 2000);
+const url =
+  "http://api.weatherstack.com/current?access_key=c05df93ddaeecea354dd377eeffc4aec&query=brussels";
 
-setTimeout(() => {
-  console.log("0 second timer");
-}, 0);
-
-console.log("Stopping");
+request(url, (err, res) => {
+  const data = JSON.parse(res.body);
+  console.log(data.current);
+});
